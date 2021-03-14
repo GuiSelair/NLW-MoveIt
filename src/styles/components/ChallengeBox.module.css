@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 32px;
 }
 
 .challengeNotActive {

@@ -1,5 +1,8 @@
 import { useCallback, useMemo, useState, useEffect } from 'react';
+
 import styles from '../styles/components/Countdown.module.css';
+
+import { useChallenges } from '../contexts/ChallengesContext';
 
 let countdownTimeout: NodeJS.Timeout;
 
@@ -7,6 +10,7 @@ const Countdown = () => {
   const [time, setTime] = useState(0.1 * 60);
   const [isActive, setIsActive] = useState(false);
   const [hasFinished, setHasFinished] = useState(false);
+  const { startNewChallenge } = useChallenges();
 
   const [minuteLeft, minuteRight] = useMemo(() => {
     const minutes = Math.floor(time / 60);
@@ -37,6 +41,7 @@ const Countdown = () => {
     } else if (isActive && time === 0){
       setHasFinished(true);
       setIsActive(false);
+      startNewChallenge();
     }
   }, [isActive, time]);
 

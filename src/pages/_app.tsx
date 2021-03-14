@@ -1,8 +1,13 @@
-
 import "../styles/global.css";
 
+import ContextsProviders from '../contexts/index';
+
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <ContextsProviders>
+       <Component {...pageProps} />
+    </ContextsProviders>
+  );
 }
 
 export default MyApp
